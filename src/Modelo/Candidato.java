@@ -10,26 +10,27 @@ package Modelo;
  * @author MABY
  */
 public class Candidato {   
+    private String matricula;
     private String nombre;
     private String apellidoP;
     private String apellidoM;
-    private String boleta;
     private String correo;
     private String telefon;
     private String carrera;
     private String generacion;
     private String temaTesis;
     private String directorTesis;
-    private boolean trabaja;
+    private String trabaja;
     private String lugarTrabajo;
     private String horarioTrabajo;
+    private String imagen;
 
     /**
      *
      * @param nombre nombre del candidato
      * @param apellidoP apellido paterno del candidatos
      * @param apellidoM apellido maternoi del candidato
-     * @param boleta boleta del candidato
+     * @param matricula boleta del candidato
      * @param correo correo electronico del candidato
      * @param telefon telefono celular del candidato
      * @param carrera carrera del candidato
@@ -40,11 +41,11 @@ public class Candidato {
      * @param lugarTrabajo lugar de trabajo del candidato si trabaja
      * @param horarioTrabajo horarioi de trabaja del candidato si trabaja
      */
-    public Candidato(String nombre, String apellidoP, String apellidoM, String boleta, String correo, String telefon, String carrera, String generacion, String temaTesis, String directorTesis, boolean trabaja, String lugarTrabajo, String horarioTrabajo) {
+    public Candidato(String matricula, String nombre, String apellidoP, String apellidoM, String correo, String telefon, String carrera, String generacion, String temaTesis, String directorTesis, String trabaja, String lugarTrabajo, String horarioTrabajo, String imagen) {
+        this.matricula = matricula;
         this.nombre = nombre;
         this.apellidoP = apellidoP;
         this.apellidoM = apellidoM;
-        this.boleta = boleta;
         this.correo = correo;
         this.telefon = telefon;
         this.carrera = carrera;
@@ -54,6 +55,22 @@ public class Candidato {
         this.trabaja = trabaja;
         this.lugarTrabajo = lugarTrabajo;
         this.horarioTrabajo = horarioTrabajo;
+        this.imagen = imagen;
+    }
+
+    public Candidato(String matricula, String nombre, String apellidoP, String apellidoM, String correo, String telefon, String carrera, String generacion, String temaTesis, String directorTesis, String trabaja, String imagen) {
+        this.matricula = matricula;
+        this.nombre = nombre;
+        this.apellidoP = apellidoP;
+        this.apellidoM = apellidoM;
+        this.correo = correo;
+        this.telefon = telefon;
+        this.carrera = carrera;
+        this.generacion = generacion;
+        this.temaTesis = temaTesis;
+        this.directorTesis = directorTesis;
+        this.trabaja = trabaja;
+        this.imagen = imagen;
     }
 
     /**
@@ -108,16 +125,16 @@ public class Candidato {
      *
      * @return
      */
-    public String getBoleta() {
-        return boleta;
+    public String getMatricula() {
+        return matricula;
     }
 
     /**
      *
-     * @param boleta
+     * @param matricula
      */
-    public void setBoleta(String boleta) {
-        this.boleta = boleta;
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
     }
 
     /**
@@ -220,7 +237,7 @@ public class Candidato {
      *
      * @return
      */
-    public boolean isTrabaja() {
+    public String getTrabaja() {
         return trabaja;
     }
 
@@ -228,7 +245,7 @@ public class Candidato {
      *
      * @param trabaja
      */
-    public void setTrabaja(boolean trabaja) {
+    public void setTrabaja(String trabaja) {
         this.trabaja = trabaja;
     }
 
@@ -262,6 +279,14 @@ public class Candidato {
      */
     public void setHorarioTrabajo(String horarioTrabajo) {
         this.horarioTrabajo = horarioTrabajo;
+    }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
 
     
