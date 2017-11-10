@@ -5,6 +5,8 @@
  */
 package seminariodetitulacion;
 
+import splash.JFInicio;
+
 /**
  *
  * @author MABY
@@ -15,7 +17,7 @@ public class SeminarioDeTitulacion {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        new JFInicio().setVisible(true);
     }
     
 }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Vistas;
+package principal;
 
 import DAO.CandidatoDAO;
 import Modelo.Candidato;
@@ -88,7 +88,6 @@ public class JFCandidato extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(800, 700));
 
         jLabel.setText("Nombre: ");
 
