@@ -5,45 +5,25 @@
  */
 package Paneles;
 
-import DAO.CandidatoDAO;
-import Modelo.Candidato;
-import java.awt.Image;
-import java.awt.Toolkit;
-import java.io.File;
-import javax.swing.ImageIcon;
-import javax.swing.JFileChooser;
-
+import Utilidades.VerTabla;
 /**
  *
  * @author MABY
  */
 public class JPVerCandidato extends javax.swing.JPanel {
 
-    
-    String matricula;
-    String nombre;
-    String apellidoP;
-    String apellidoM;
-    String correo;
-    String telefon;
-    String carrera;
-    String generacion;
-    String temaTesis;
-    String directorTesis;
-    String trabaja;
-    String lugarTrabajo;
-    String horarioTrabajo;
-    String imagen;
-    
-    JFileChooser elegirImagen;
-    CandidatoDAO candidatoDAO;
-    Candidato candidato;
+    String codigo;
+    int clic_tabla;
+    boolean bandera = false;
+    VerTabla v;
     /**
      * Creates new form JPCandidato
      */
     public JPVerCandidato() {
         initComponents();
-        candidatoDAO = new CandidatoDAO();
+        v = new VerTabla();
+
+        v.visualizar_tabla(tabla);
     }
 
     /**
@@ -57,6 +37,9 @@ public class JPVerCandidato extends javax.swing.JPanel {
 
         jPanel2 = new javax.swing.JPanel();
         titulo = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabla = new javax.swing.JTable();
+        btnActualizar = new javax.swing.JButton();
 
         jPanel2.setBackground(new java.awt.Color(58, 159, 171));
 
@@ -82,23 +65,97 @@ public class JPVerCandidato extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
+        tabla.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Nombre", "Foto"
+            }
+        ));
+        tabla.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tabla);
+
+        btnActualizar.setBackground(new java.awt.Color(204, 255, 204));
+        btnActualizar.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        btnActualizar.setForeground(new java.awt.Color(0, 51, 255));
+        btnActualizar.setText("Actualizar y Ver Tabla");
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 601, Short.MAX_VALUE)
+                    .addComponent(btnActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 747, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 617, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnActualizar)
+                .addGap(72, 72, 72))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void tablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMouseClicked
+        clic_tabla = tabla.rowAtPoint(evt.getPoint());
+
+        codigo = "" + tabla.getValueAt(clic_tabla, 0);
+        String titulo = "" + tabla.getValueAt(clic_tabla, 1);
+
+        //        txtCodigo.setText(String.valueOf(codigo));
+        //        txtNombre.setText(titulo);
+        //        txtPrecio.setText(String.valueOf(precio));
+//        if (!bandera) {
+//            try {
+//                lbl = (JLabel) tabla.getValueAt(clic_tabla, 2);
+//                pC.VerElemento(lbl, codigo, titulo);
+//
+//            } catch (Exception ex) {
+//                System.out.print("Error al ingresar");
+//            }        // TODO add your handling code here:
+//        } else {
+//            int cantidad = Integer.parseInt("" + tabla.getValueAt(clic_tabla, 2));
+//            float precio = Float.parseFloat("" + tabla.getValueAt(clic_tabla, 3));
+//            float subtotal = Float.parseFloat("" + tabla.getValueAt(clic_tabla, 4));
+//            Pcarrito.VerElemento(codigo, titulo, cantidad, precio, subtotal, clic_tabla);
+//        }
+    }//GEN-LAST:event_tablaMouseClicked
+
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+
+            v.visualizar_tabla(tabla);
+    }//GEN-LAST:event_btnActualizarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnActualizar;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tabla;
     public static javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
 }

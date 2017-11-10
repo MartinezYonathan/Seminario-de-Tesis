@@ -11,6 +11,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -70,5 +73,17 @@ public class CandidatoDAO {
                 Logger.getLogger(CandidatoDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
         }     
+    }
+    
+    public ResultSet VerCandidato() {
+        try {
+            Connection accesoBD = conexion.getConexion();
+            String sql = "SELECT * FROM ST_CANDIDATO";
+            Statement consulta = accesoBD.createStatement();
+            return consulta.executeQuery(sql);
+        } catch (SQLException ex) {
+            Logger.getLogger(CandidatoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
     }
 }
