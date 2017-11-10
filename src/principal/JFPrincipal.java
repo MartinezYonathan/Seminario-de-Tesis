@@ -5,9 +5,10 @@
  */
 package principal;
 
-import alertas.principal.FadeEffect;
+import Paneles.JPCandidato;
+import Paneles.JPVerCandidato;
 import javax.swing.ImageIcon;
-import javax.swing.JFrame; 
+import javax.swing.JFrame;
 
 /**
  *
@@ -15,13 +16,12 @@ import javax.swing.JFrame;
  */
 public class JFPrincipal extends javax.swing.JFrame {
 
-    boolean b = true;
+    private boolean ingresar = false;
     private boolean minimiza = false;
-
+    private String ingresaAux = "INICIAR SESIÓN";
     public static boolean cerra = false;
 //    private Ventas ventas = null;
 
-    
     /**
      * Creates new form JFPrincipal
      */
@@ -41,36 +41,29 @@ public class JFPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        cerrar = new principal.MaterialButton();
         minimizar = new principal.MaterialButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        cerrar = new principal.MaterialButton();
         jPanel1 = new javax.swing.JPanel();
-        btnVentas1 = new principal.MaterialButtomRectangle();
-        btnProductos1 = new principal.MaterialButtomRectangle();
-        btnGastos1 = new principal.MaterialButtomRectangle();
+        btnAgregCandidato = new principal.MaterialButtomRectangle();
+        btnVerCandidatos = new principal.MaterialButtomRectangle();
+        btnGrupos = new principal.MaterialButtomRectangle();
         btnUsuarios1 = new principal.MaterialButtomRectangle();
         btnAbout1 = new principal.MaterialButtomRectangle();
         cerrarSesion1 = new principal.MaterialButtomRectangle();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        txtPassword = new javax.swing.JPasswordField();
+        txtUsuario = new javax.swing.JTextField();
+        info = new javax.swing.JLabel();
+        JPanelPrincipal = new javax.swing.JPanel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel2.setBackground(new java.awt.Color(58, 159, 171));
-
-        cerrar.setBackground(new java.awt.Color(255, 255, 255));
-        cerrar.setForeground(new java.awt.Color(58, 159, 171));
-        cerrar.setText("X");
-        cerrar.setToolTipText("<html> <head> <style> #contenedor{background:white;color:black; padding-left:10px;padding-right:10px;margin:0; padding-top:5px;padding-bottom:5px;} </style> </head> <body> <h4 id=\"contenedor\">Cerrar</h4> </body> </html>");
-        cerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cerrar.setFont(new java.awt.Font("Roboto Medium", 1, 20)); // NOI18N
-        cerrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cerrarActionPerformed(evt);
-            }
-        });
 
         minimizar.setBackground(new java.awt.Color(255, 255, 255));
         minimizar.setForeground(new java.awt.Color(58, 159, 171));
@@ -90,6 +83,18 @@ public class JFPrincipal extends javax.swing.JFrame {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo-icono1.png"))); // NOI18N
 
+        cerrar.setBackground(new java.awt.Color(255, 255, 255));
+        cerrar.setForeground(new java.awt.Color(58, 159, 171));
+        cerrar.setText("X");
+        cerrar.setToolTipText("<html> <head> <style> #contenedor{background:white;color:black; padding-left:10px;padding-right:10px;margin:0; padding-top:5px;padding-bottom:5px;} </style> </head> <body> <h4 id=\"contenedor\">Cerrar</h4> </body> </html>");
+        cerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cerrar.setFont(new java.awt.Font("Roboto Medium", 1, 20)); // NOI18N
+        cerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cerrarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -99,57 +104,58 @@ public class JFPrincipal extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 638, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 161, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
                 .addComponent(minimizar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cerrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(cerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(minimizar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(minimizar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        btnVentas1.setBackground(new java.awt.Color(58, 159, 171));
-        btnVentas1.setForeground(new java.awt.Color(255, 255, 255));
-        btnVentas1.setText("VENTAS");
-        btnVentas1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnVentas1.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
-        btnVentas1.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregCandidato.setBackground(new java.awt.Color(58, 159, 171));
+        btnAgregCandidato.setForeground(new java.awt.Color(255, 255, 255));
+        btnAgregCandidato.setText("Agregar Candidato");
+        btnAgregCandidato.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAgregCandidato.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
+        btnAgregCandidato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVentas1ActionPerformed(evt);
+                btnAgregCandidatoActionPerformed(evt);
             }
         });
 
-        btnProductos1.setBackground(new java.awt.Color(58, 159, 171));
-        btnProductos1.setForeground(new java.awt.Color(255, 255, 255));
-        btnProductos1.setText("PRODUCTOS");
-        btnProductos1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnProductos1.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
-        btnProductos1.addActionListener(new java.awt.event.ActionListener() {
+        btnVerCandidatos.setBackground(new java.awt.Color(58, 159, 171));
+        btnVerCandidatos.setForeground(new java.awt.Color(255, 255, 255));
+        btnVerCandidatos.setText("Ver Candidatos");
+        btnVerCandidatos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnVerCandidatos.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
+        btnVerCandidatos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnProductos1ActionPerformed(evt);
+                btnVerCandidatosActionPerformed(evt);
             }
         });
 
-        btnGastos1.setBackground(new java.awt.Color(58, 159, 171));
-        btnGastos1.setForeground(new java.awt.Color(255, 255, 255));
-        btnGastos1.setText("GASTOS");
-        btnGastos1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnGastos1.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
-        btnGastos1.addActionListener(new java.awt.event.ActionListener() {
+        btnGrupos.setBackground(new java.awt.Color(58, 159, 171));
+        btnGrupos.setForeground(new java.awt.Color(255, 255, 255));
+        btnGrupos.setText("GRUPOS");
+        btnGrupos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnGrupos.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
+        btnGrupos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGastos1ActionPerformed(evt);
+                btnGruposActionPerformed(evt);
             }
         });
 
@@ -177,7 +183,7 @@ public class JFPrincipal extends javax.swing.JFrame {
 
         cerrarSesion1.setBackground(new java.awt.Color(58, 159, 171));
         cerrarSesion1.setForeground(new java.awt.Color(255, 255, 255));
-        cerrarSesion1.setText("CERRAR SESIÓN");
+        cerrarSesion1.setText("INICIAR SESIÓN");
         cerrarSesion1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cerrarSesion1.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
         cerrarSesion1.addActionListener(new java.awt.event.ActionListener() {
@@ -201,56 +207,91 @@ public class JFPrincipal extends javax.swing.JFrame {
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("VERSION 1.0");
 
+        txtPassword.setText("jPassword");
+
+        txtUsuario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtUsuario.setForeground(new java.awt.Color(58, 159, 171));
+        txtUsuario.setText("USUARIO");
+        txtUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtUsuarioActionPerformed(evt);
+            }
+        });
+
+        info.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        info.setForeground(new java.awt.Color(58, 159, 171));
+        info.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnVentas1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnProductos1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnGastos1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnUsuarios1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cerrarSesion1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnAbout1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE))
-                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnAgregCandidato, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
+                                    .addComponent(btnVerCandidatos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnGrupos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnUsuarios1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnAbout1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtUsuario)
+                                    .addComponent(txtPassword)
+                                    .addComponent(info, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(10, 10, 10)))))
                 .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(cerrarSesion1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(20, 20, 20))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnVentas1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnProductos1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnAgregCandidato, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnVerCandidatos, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnGrupos, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnUsuarios1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnAbout1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                .addComponent(info, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnGastos1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(49, 49, 49)
-                .addComponent(btnUsuarios1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
-                .addComponent(btnAbout1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 215, Short.MAX_VALUE)
-                .addComponent(cerrarSesion1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
+                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cerrarSesion1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel8)
                 .addContainerGap())
+        );
+
+        JPanelPrincipal.setBackground(new java.awt.Color(204, 204, 204));
+
+        javax.swing.GroupLayout JPanelPrincipalLayout = new javax.swing.GroupLayout(JPanelPrincipal);
+        JPanelPrincipal.setLayout(JPanelPrincipalLayout);
+        JPanelPrincipalLayout.setHorizontalGroup(
+            JPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        JPanelPrincipalLayout.setVerticalGroup(
+            JPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -261,23 +302,23 @@ public class JFPrincipal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(JPanelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(JPanelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(21, 21, 21))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void cerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarActionPerformed
-
-    }//GEN-LAST:event_cerrarActionPerformed
 
     private void minimizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minimizarActionPerformed
         this.setExtendedState(ICONIFIED);
@@ -289,17 +330,38 @@ public class JFPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_minimizarActionPerformed
 
-    private void btnVentas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentas1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnVentas1ActionPerformed
+    private void btnAgregCandidatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregCandidatoActionPerformed
+        JPCandidato pCandidato = new JPCandidato();
+        pCandidato.setSize(JPanelPrincipal.getWidth(), JPanelPrincipal.getHeight());
+        pCandidato.setLocation(0, 0);
+        pCandidato.setBackground(new java.awt.Color(204, 255, 255));
 
-    private void btnProductos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductos1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnProductos1ActionPerformed
+        JPanelPrincipal.removeAll();
+        JPanelPrincipal.add(pCandidato);
+        JPanelPrincipal.revalidate();
+        JPanelPrincipal.repaint();
 
-    private void btnGastos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGastos1ActionPerformed
+    }//GEN-LAST:event_btnAgregCandidatoActionPerformed
+
+    private void btnVerCandidatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerCandidatosActionPerformed
+        if (ingresar) {
+            JPVerCandidato pVerCandidato = new JPVerCandidato();
+            pVerCandidato.setSize(JPanelPrincipal.getWidth(), JPanelPrincipal.getHeight());
+            pVerCandidato.setLocation(0, 0);
+            pVerCandidato.setBackground(new java.awt.Color(204, 153, 0));
+
+            JPanelPrincipal.removeAll();
+            JPanelPrincipal.add(pVerCandidato);
+            JPanelPrincipal.revalidate();
+            JPanelPrincipal.repaint();
+        } else {
+            this.info.setText("¡ INGRESA USUARIO !");
+        }
+    }//GEN-LAST:event_btnVerCandidatosActionPerformed
+
+    private void btnGruposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGruposActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnGastos1ActionPerformed
+    }//GEN-LAST:event_btnGruposActionPerformed
 
     private void btnUsuarios1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuarios1ActionPerformed
         // TODO add your handling code here:
@@ -310,8 +372,37 @@ public class JFPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAbout1ActionPerformed
 
     private void cerrarSesion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarSesion1ActionPerformed
-        // TODO add your handling code here:
+        if (!ingresar && ingresaAux.equals("INICIAR SESIÓN")) {
+            if (this.txtUsuario.getText().equals("") || this.txtPassword.getText().equals("")) {
+                this.info.setText("¡ USUARIO Y CONTRASEÑA REQUERIDOS !");
+                this.txtUsuario.requestFocus();
+            } else {
+                if (this.txtUsuario.getText().equals("admin") && this.txtPassword.getText().equals("admin")) {
+                    this.info.setText("¡ INGRESADO CORRECTAMENTE !");
+                    ingresaAux = "CERRAR SESIÓN";
+                    cerrarSesion1.setText(ingresaAux);
+                    ingresar = true;
+                } else {
+                    this.info.setText("¡ ERROR AL INGRESAR USUARIO !");
+                }
+            }
+        } else {
+            ingresaAux = "INICIAR SESIÓN";
+            cerrarSesion1.setText(ingresaAux);
+            ingresar = false;
+            JPanelPrincipal.removeAll();
+            JPanelPrincipal.revalidate();
+            JPanelPrincipal.repaint();
+        }
     }//GEN-LAST:event_cerrarSesion1ActionPerformed
+
+    private void cerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_cerrarActionPerformed
+
+    private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -349,13 +440,15 @@ public class JFPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public static javax.swing.JPanel JPanelPrincipal;
     private principal.MaterialButtomRectangle btnAbout1;
-    private principal.MaterialButtomRectangle btnGastos1;
-    private principal.MaterialButtomRectangle btnProductos1;
+    private principal.MaterialButtomRectangle btnAgregCandidato;
+    private principal.MaterialButtomRectangle btnGrupos;
     private principal.MaterialButtomRectangle btnUsuarios1;
-    private principal.MaterialButtomRectangle btnVentas1;
+    private principal.MaterialButtomRectangle btnVerCandidatos;
     private principal.MaterialButton cerrar;
     private principal.MaterialButtomRectangle cerrarSesion1;
+    public static javax.swing.JLabel info;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel6;
@@ -364,5 +457,7 @@ public class JFPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private principal.MaterialButton minimizar;
+    private javax.swing.JPasswordField txtPassword;
+    private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
