@@ -75,8 +75,8 @@ public class JPVerCandidato extends javax.swing.JPanel {
         jlDirectorTesis = new javax.swing.JLabel();
         jlHorastrabajo = new javax.swing.JLabel();
         jlTrabaja = new javax.swing.JLabel();
-        lbl = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
+        cerrarSesion1 = new principal.MaterialButtomRectangle();
 
         jPanel2.setBackground(new java.awt.Color(58, 159, 171));
 
@@ -211,10 +211,18 @@ public class JPVerCandidato extends javax.swing.JPanel {
         jlTrabaja.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jlTrabaja.setText("Trabaja: ");
 
-        lbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl.setText("Preview");
-
         jLabel13.setText("jLabel13");
+
+        cerrarSesion1.setBackground(new java.awt.Color(58, 159, 171));
+        cerrarSesion1.setForeground(new java.awt.Color(255, 255, 255));
+        cerrarSesion1.setText("ACEPTAR CANDIDATO");
+        cerrarSesion1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cerrarSesion1.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
+        cerrarSesion1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cerrarSesion1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -265,82 +273,80 @@ public class JPVerCandidato extends javax.swing.JPanel {
                                     .addComponent(jlHorastrabajo)
                                     .addComponent(jlDirectorTesis)
                                     .addComponent(jlLugarTrabajo)
-                                    .addComponent(jlTrabaja)))))
+                                    .addComponent(jlTrabaja))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(193, 193, 193)
-                        .addComponent(lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(cerrarSesion1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 619, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(94, 94, 94)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel)
-                            .addComponent(jlNombre))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(jlApellidoP))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel2)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel4)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel5)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel7)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel8)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel6)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel9)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel11)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel12)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel10))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jlApellidoM)
-                                .addGap(18, 18, 18)
-                                .addComponent(jlMatricula)
-                                .addGap(18, 18, 18)
-                                .addComponent(jlCorreo)
-                                .addGap(18, 18, 18)
-                                .addComponent(jlTelefono)
-                                .addGap(18, 18, 18)
-                                .addComponent(jlCarrera)
-                                .addGap(18, 18, 18)
-                                .addComponent(jlGeneracion)
-                                .addGap(18, 18, 18)
-                                .addComponent(jltematesis)
-                                .addGap(18, 18, 18)
-                                .addComponent(jlDirectorTesis)
-                                .addGap(18, 18, 18)
-                                .addComponent(jlTrabaja)
-                                .addGap(18, 18, 18)
-                                .addComponent(jlLugarTrabajo)
-                                .addGap(18, 18, 18)
-                                .addComponent(jlHorastrabajo)))))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 619, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addComponent(btnActualizar)
                 .addGap(72, 72, 72))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(63, 63, 63))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(94, 94, 94)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel)
+                    .addComponent(jlNombre))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jlApellidoP))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel5)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel7)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel8)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel6)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel9)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel11)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel12)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel10))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jlApellidoM)
+                        .addGap(18, 18, 18)
+                        .addComponent(jlMatricula)
+                        .addGap(18, 18, 18)
+                        .addComponent(jlCorreo)
+                        .addGap(18, 18, 18)
+                        .addComponent(jlTelefono)
+                        .addGap(18, 18, 18)
+                        .addComponent(jlCarrera)
+                        .addGap(18, 18, 18)
+                        .addComponent(jlGeneracion)
+                        .addGap(18, 18, 18)
+                        .addComponent(jltematesis)
+                        .addGap(18, 18, 18)
+                        .addComponent(jlDirectorTesis)
+                        .addGap(18, 18, 18)
+                        .addComponent(jlTrabaja)
+                        .addGap(18, 18, 18)
+                        .addComponent(jlLugarTrabajo)
+                        .addGap(18, 18, 18)
+                        .addComponent(jlHorastrabajo)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(cerrarSesion1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(80, 80, 80))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -372,13 +378,18 @@ public class JPVerCandidato extends javax.swing.JPanel {
     }//GEN-LAST:event_tablaMouseClicked
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-
         v.visualizar_tabla(tabla);
     }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void cerrarSesion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarSesion1ActionPerformed
+        candidatoDAO.AceptarCandidato(matricula);
+        v.visualizar_tabla(tabla);
+    }//GEN-LAST:event_cerrarSesion1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
+    private principal.MaterialButtomRectangle cerrarSesion1;
     private javax.swing.JLabel jLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -408,7 +419,6 @@ public class JPVerCandidato extends javax.swing.JPanel {
     private javax.swing.JLabel jlTelefono;
     private javax.swing.JLabel jlTrabaja;
     private javax.swing.JLabel jltematesis;
-    private javax.swing.JLabel lbl;
     private javax.swing.JTable tabla;
     public static javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables

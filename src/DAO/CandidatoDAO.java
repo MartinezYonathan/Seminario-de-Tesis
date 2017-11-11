@@ -62,10 +62,10 @@ public class CandidatoDAO {
 
             ps.executeUpdate();
             accesoBD.commit();
-            return "Se Agrego Correctamente a la base de datos";
+            return "SE AGREGO CORRECTAMENTE A LA BASE DE DATOS";
         } catch (Exception ex) {
             Logger.getLogger(CandidatoDAO.class.getName()).log(Level.SEVERE, null, ex);
-            return "ERROR: No se agrego correctamente";
+            return "ERROR: NO SE AGREGO CORRECTAMENTE";
         } finally {
             try {
                 ps.close();
@@ -101,7 +101,16 @@ public class CandidatoDAO {
     }
 
     public String AceptarCandidato(String matricula) {
-
-        return "SE A AGREGADO EL CANDIDATO A UN GRUPO";
+        try {
+            Connection accesoBD = conexion.getConexion();
+            String sql = "UPDATE ST_CANDIDATO SET ACEPTADO = 'si' WHERE MATRICULA =" + "'" + matricula + "'";
+            Statement consulta = accesoBD.createStatement();
+            consulta.executeQuery(sql);
+            return "SE A AGREGADO EL CANDIDATO A UN GRUPO";
+        } catch (SQLException ex) {
+            Logger.getLogger(CandidatoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return "ERROR: NO SE PUDO AAGREGAR A UN GRUPO";
+        }
+        
     }
 }
