@@ -32,9 +32,9 @@ public class CandidatoDAO {
     public String InsertarCandidato(Candidato candidato) {
         String insert = "INSERT INTO ST_CANDIDATO (MATRICULA, NOMBRE, APELLIDOP, "
                 + "APELLIDOM, CORREO, TELEFON, CARRERA, GENERACION, TEMATESIS, "
-                + "DIRECTORTESIS, TRABAJA, LUGARTRABAJO, HORARIOTRABAJO, IMAGEN) "
-                + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-        
+                + "DIRECTORTESIS, TRABAJA, LUGARTRABAJO, HORARIOTRABAJO, ACEPTADO, IMAGEN) "
+                + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+
         FileInputStream fis = null;
         PreparedStatement ps = null;
         try {
@@ -57,7 +57,8 @@ public class CandidatoDAO {
             ps.setString(11, candidato.getTrabaja());
             ps.setString(12, candidato.getLugarTrabajo());
             ps.setString(13, candidato.getHorarioTrabajo());
-            ps.setBinaryStream(14, fis, (int)file.length());
+            ps.setString(14, "no");
+            ps.setBinaryStream(15, fis, (int) file.length());
 
             ps.executeUpdate();
             accesoBD.commit();
@@ -65,16 +66,16 @@ public class CandidatoDAO {
         } catch (Exception ex) {
             Logger.getLogger(CandidatoDAO.class.getName()).log(Level.SEVERE, null, ex);
             return "ERROR: No se agrego correctamente";
-        }finally{
+        } finally {
             try {
                 ps.close();
                 fis.close();
             } catch (Exception ex) {
                 Logger.getLogger(CandidatoDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }     
+        }
     }
-    
+
     public ResultSet VerCandidato() {
         try {
             Connection accesoBD = conexion.getConexion();
@@ -85,5 +86,22 @@ public class CandidatoDAO {
             Logger.getLogger(CandidatoDAO.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
+    }
+
+    public ResultSet ClickCandidato(String matricula) {
+        try {
+            Connection accesoBD = conexion.getConexion();
+            String sql = "SELECT * FROM ST_CANDIDATO WHERE MATRICULA=" + "'" + matricula + "'";
+            Statement consulta = accesoBD.createStatement();
+            return consulta.executeQuery(sql);
+        } catch (SQLException ex) {
+            Logger.getLogger(CandidatoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+
+    public String AceptarCandidato(String matricula) {
+
+        return "SE A AGREGADO EL CANDIDATO A UN GRUPO";
     }
 }

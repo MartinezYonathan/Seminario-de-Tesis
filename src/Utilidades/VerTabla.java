@@ -43,33 +43,35 @@ public class VerTabla {
         try {
 
             while (rs.next()) {
-                Object[] fila = new Object[7];
-                fila[0] = rs.getObject(1);
-                fila[1] = rs.getObject(2);
-                Blob blob = rs.getBlob(14);
+                if (rs.getObject(14).equals("no")) {
+                    Object[] fila = new Object[3];
+                    fila[0] = rs.getObject(1);
+                    fila[1] = rs.getObject(2);
+                    Blob blob = rs.getBlob(15);
 
-                if (blob != null) {
-                    try {
-                        byte[] data = blob.getBytes(1, (int) blob.length());
-                        BufferedImage img = null;
+                    if (blob != null) {
                         try {
-                            img = ImageIO.read(new ByteArrayInputStream(data));
+                            byte[] data = blob.getBytes(1, (int) blob.length());
+                            BufferedImage img = null;
+                            try {
+                                img = ImageIO.read(new ByteArrayInputStream(data));
 
-                            img = resize(img, 200, 250);
+                                img = resize(img, 200, 250);
 
+                            } catch (Exception ex) {
+                                System.out.println(ex.getMessage());
+                            }
+                            ImageIcon icono = new ImageIcon(img);
+                            fila[2] = new JLabel(icono);
                         } catch (Exception ex) {
-                            System.out.println(ex.getMessage());
+                            fila[2] = "No Imagen";
                         }
-                        ImageIcon icono = new ImageIcon(img);
-                        fila[2] = new JLabel(icono);
-                    } catch (Exception ex) {
+                    } else {
                         fila[2] = "No Imagen";
                     }
-                } else {
-                    fila[2] = "No Imagen";
-                }
 
-                dt.addRow(fila);
+                    dt.addRow(fila);
+                }
             }
 
             tabla.setModel(dt);
