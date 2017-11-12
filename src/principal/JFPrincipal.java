@@ -5,7 +5,9 @@
  */
 package principal;
 
+import Paneles.JPAsesor;
 import Paneles.JPCandidato;
+import Paneles.JPGrupos;
 import Paneles.JPVerCandidato;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -46,7 +48,7 @@ public class JFPrincipal extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         cerrar = new principal.MaterialButton();
         jPanel1 = new javax.swing.JPanel();
-        btnAgregCandidato = new principal.MaterialButtomRectangle();
+        btnAgregAsesor = new principal.MaterialButtomRectangle();
         btnVerCandidatos = new principal.MaterialButtomRectangle();
         btnGrupos = new principal.MaterialButtomRectangle();
         btnUsuarios1 = new principal.MaterialButtomRectangle();
@@ -58,6 +60,7 @@ public class JFPrincipal extends javax.swing.JFrame {
         txtPassword = new javax.swing.JPasswordField();
         txtUsuario = new javax.swing.JTextField();
         info = new javax.swing.JLabel();
+        btnAgregCandidato = new principal.MaterialButtomRectangle();
         JPanelPrincipal = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -125,14 +128,14 @@ public class JFPrincipal extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        btnAgregCandidato.setBackground(new java.awt.Color(58, 159, 171));
-        btnAgregCandidato.setForeground(new java.awt.Color(255, 255, 255));
-        btnAgregCandidato.setText("Agregar Candidato");
-        btnAgregCandidato.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnAgregCandidato.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
-        btnAgregCandidato.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregAsesor.setBackground(new java.awt.Color(58, 159, 171));
+        btnAgregAsesor.setForeground(new java.awt.Color(255, 255, 255));
+        btnAgregAsesor.setText("AGREGAR ASESOR");
+        btnAgregAsesor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAgregAsesor.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
+        btnAgregAsesor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregCandidatoActionPerformed(evt);
+                btnAgregAsesorActionPerformed(evt);
             }
         });
 
@@ -215,7 +218,7 @@ public class JFPrincipal extends javax.swing.JFrame {
 
         txtUsuario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         txtUsuario.setForeground(new java.awt.Color(58, 159, 171));
-        txtUsuario.setText("USUARIO");
+        txtUsuario.setText("admin");
         txtUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUsuarioActionPerformed(evt);
@@ -226,40 +229,58 @@ public class JFPrincipal extends javax.swing.JFrame {
         info.setForeground(new java.awt.Color(58, 159, 171));
         info.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
+        btnAgregCandidato.setBackground(new java.awt.Color(58, 159, 171));
+        btnAgregCandidato.setForeground(new java.awt.Color(255, 255, 255));
+        btnAgregCandidato.setText("Agregar Candidato");
+        btnAgregCandidato.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAgregCandidato.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
+        btnAgregCandidato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregCandidatoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnGrupos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnAgregCandidato, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
-                                    .addComponent(btnVerCandidatos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnGrupos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnUsuarios1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnAbout1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtUsuario)
-                                    .addComponent(txtPassword)
-                                    .addComponent(info, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(10, 10, 10)))))
+                            .addComponent(btnAgregAsesor, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+                            .addComponent(txtUsuario)
+                            .addComponent(txtPassword)
+                            .addComponent(btnVerCandidatos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(info, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(cerrarSesion1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(20, 20, 20))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(cerrarSesion1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(20, 20, 20))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnAgregCandidato, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnAbout1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnUsuarios1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnAgregCandidato, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnAgregAsesor, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnVerCandidatos, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -268,7 +289,7 @@ public class JFPrincipal extends javax.swing.JFrame {
                 .addComponent(btnUsuarios1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAbout1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addComponent(info, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -306,7 +327,7 @@ public class JFPrincipal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(JPanelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -334,18 +355,24 @@ public class JFPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_minimizarActionPerformed
 
-    private void btnAgregCandidatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregCandidatoActionPerformed
-        JPCandidato pCandidato = new JPCandidato();
-        pCandidato.setSize(JPanelPrincipal.getWidth(), JPanelPrincipal.getHeight());
-        pCandidato.setLocation(0, 0);
-        pCandidato.setBackground(new java.awt.Color(204, 255, 255));
+    private void btnAgregAsesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregAsesorActionPerformed
+        if (ingresar) {
+            JPAsesor pAsesor = new JPAsesor();
+            pAsesor.setSize(JPanelPrincipal.getWidth(), JPanelPrincipal.getHeight());
+            pAsesor.setLocation(0, 0);
 
-        JPanelPrincipal.removeAll();
-        JPanelPrincipal.add(pCandidato);
-        JPanelPrincipal.revalidate();
-        JPanelPrincipal.repaint();
+            JPanelPrincipal.removeAll();
+            JPanelPrincipal.add(pAsesor);
+            JPanelPrincipal.revalidate();
+            JPanelPrincipal.repaint();
+        } else {
+            this.info.setText("¡ INGRESA USUARIO !");
+            JPanelPrincipal.removeAll();
+            JPanelPrincipal.revalidate();
+            JPanelPrincipal.repaint();
+        }
 
-    }//GEN-LAST:event_btnAgregCandidatoActionPerformed
+    }//GEN-LAST:event_btnAgregAsesorActionPerformed
 
     private void btnVerCandidatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerCandidatosActionPerformed
         if (ingresar) {
@@ -360,11 +387,22 @@ public class JFPrincipal extends javax.swing.JFrame {
             JPanelPrincipal.repaint();
         } else {
             this.info.setText("¡ INGRESA USUARIO !");
+            JPanelPrincipal.removeAll();
+            JPanelPrincipal.revalidate();
+            JPanelPrincipal.repaint();
         }
     }//GEN-LAST:event_btnVerCandidatosActionPerformed
 
     private void btnGruposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGruposActionPerformed
-        // TODO add your handling code here:
+        JPGrupos pGrupos = new JPGrupos();
+        pGrupos.setSize(JPanelPrincipal.getWidth(), JPanelPrincipal.getHeight());
+        pGrupos.setLocation(0, 0);
+
+        JPanelPrincipal.removeAll();
+        JPanelPrincipal.add(pGrupos);
+        JPanelPrincipal.revalidate();
+        JPanelPrincipal.repaint();
+
     }//GEN-LAST:event_btnGruposActionPerformed
 
     private void btnUsuarios1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuarios1ActionPerformed
@@ -412,6 +450,18 @@ public class JFPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPasswordActionPerformed
 
+    private void btnAgregCandidatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregCandidatoActionPerformed
+        JPCandidato pCandidato = new JPCandidato();
+        pCandidato.setSize(JPanelPrincipal.getWidth(), JPanelPrincipal.getHeight());
+        pCandidato.setLocation(0, 0);
+
+        JPanelPrincipal.removeAll();
+        JPanelPrincipal.add(pCandidato);
+        JPanelPrincipal.revalidate();
+        JPanelPrincipal.repaint();
+
+    }//GEN-LAST:event_btnAgregCandidatoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -450,6 +500,7 @@ public class JFPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JPanel JPanelPrincipal;
     private principal.MaterialButtomRectangle btnAbout1;
+    private principal.MaterialButtomRectangle btnAgregAsesor;
     private principal.MaterialButtomRectangle btnAgregCandidato;
     private principal.MaterialButtomRectangle btnGrupos;
     private principal.MaterialButtomRectangle btnUsuarios1;

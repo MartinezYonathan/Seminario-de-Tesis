@@ -3,8 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/MABY/Documents/GitHub/SeminarioDeTitulacion/src/principal/Escritorio.java</file>
-            <file>file:/C:/Users/MABY/Documents/GitHub/SeminarioDeTitulacion/src/splash/JFInicio.java</file>
+            <file>file:/C:/Users/MABY/Documents/GitHub/SeminarioDeTitulacion/src/Paneles/JPCandidato.java</file>
+            <file>file:/C:/Users/MABY/Documents/GitHub/SeminarioDeTitulacion/src/Paneles/JPVerCandidato.java</file>
+            <file>file:/C:/Users/MABY/Documents/GitHub/SeminarioDeTitulacion/src/DAO/CandidatoDAO.java</file>
+            <file>file:/C:/Users/MABY/Documents/GitHub/SeminarioDeTitulacion/src/Modelo/Candidato.java</file>
             <file>file:/C:/Users/MABY/Documents/GitHub/SeminarioDeTitulacion/src/principal/JFPrincipal.java</file>
         </group>
     </open-files>

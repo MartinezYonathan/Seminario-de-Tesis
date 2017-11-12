@@ -30,7 +30,6 @@ public class VerTabla {
     }
 
     public void visualizar_tabla(JTable tabla) {
-        Connection accesoBD = conexion.getConexion();
         CandidatoDAO candidatoDAO = new CandidatoDAO();
         ResultSet rs = candidatoDAO.VerCandidato();
         //Image img = null;   
@@ -82,6 +81,10 @@ public class VerTabla {
             System.out.println(ex.getMessage());
             ex.printStackTrace();
         }
+    }
+
+    public void visualizar_tabla_Grupos(JTable tabla) {
+        
     }
 
     public static BufferedImage resize(BufferedImage bufferedImage, int newW, int newH) {

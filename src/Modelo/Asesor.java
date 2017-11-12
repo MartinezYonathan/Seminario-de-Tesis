@@ -9,10 +9,10 @@ package Modelo;
  *
  * @author MABY
  */
-public class Asesore {
+public class Asesor {
     
+    private int id_asesor;
     private String nombre;
-    private String asesor;
     private String cubículo;
     private String correo;
     private String horarioAsesoria;
@@ -25,9 +25,9 @@ public class Asesore {
      * @param correo
      * @param horarioAsesoria
      */
-    public Asesore(String nombre, String asesor, String cubículo, String correo, String horarioAsesoria) {
+    public Asesor(int id_asesor, String nombre, String cubículo, String correo, String horarioAsesoria) {    
+        this.id_asesor = id_asesor;
         this.nombre = nombre;
-        this.asesor = asesor;
         this.cubículo = cubículo;
         this.correo = correo;
         this.horarioAsesoria = horarioAsesoria;
@@ -49,20 +49,16 @@ public class Asesore {
         this.nombre = nombre;
     }
 
-    /**
-     *
-     * @return
-     */
-    public String getAsesor() {
-        return asesor;
+    public int getId_asesor() {
+        return id_asesor;
     }
 
     /**
      *
-     * @param asesor
+     * @return id_asesor
      */
-    public void setAsesor(String asesor) {
-        this.asesor = asesor;
+    public void setId_asesor(int id_asesor) {
+        this.id_asesor = id_asesor;
     }
 
     /**
