@@ -2,6 +2,7 @@ package Utilidades;
 
 import Conexion.Conexion;
 import DAO.CandidatoDAO;
+import DAO.GruporDAO;
 import Utilidades.RedimensionadorDeColumnas;
 import Utilidades.TablaImagen;
 import java.awt.Graphics2D;
@@ -23,6 +24,7 @@ import javax.swing.table.DefaultTableModel;
 public class VerTabla {
 
     Conexion conexion;
+    int contador = 0;
     private DefaultTableModel miTabla;//propiedades de la tabla
 
     public VerTabla() {
@@ -83,8 +85,43 @@ public class VerTabla {
         }
     }
 
-    public void visualizar_tabla_Grupos(JTable tabla) {
-        
+    public void visualizar_tabla_Grupos(JTable tabla, int grupo) {
+        GruporDAO grupoDAO = new GruporDAO();
+        ResultSet rs = grupoDAO.VerGrupos2();
+        contador = 0;   
+        tabla.setDefaultRenderer(Object.class, new TablaImagen());
+        DefaultTableModel dt = new DefaultTableModel();
+        dt.addColumn("Numero");
+        dt.addColumn("Matricula");
+        dt.addColumn("Nombre");
+        dt.addColumn("Apellido");
+
+        try {
+
+            while (rs.next()) {
+
+                System.out.println("" + rs.getObject(4));
+                int grupoAux = Integer.parseInt("" + rs.getObject(4));
+                if (grupoAux == grupo) {
+                    contador++;
+                    Object[] fila = new Object[4];
+                    fila[0] = contador;
+                    fila[1] = rs.getObject(1);
+                    fila[2] = rs.getObject(2);
+                    fila[3] = rs.getObject(3);
+
+                    dt.addRow(fila);
+                }
+            }
+
+            tabla.setModel(dt);
+            RedimensionadorDeColumnas.ajustarAnchoColumnas(tabla);
+            tabla.setRowMargin(5);
+            tabla.setRowHeight(250);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            ex.printStackTrace();
+        }
     }
 
     public static BufferedImage resize(BufferedImage bufferedImage, int newW, int newH) {

@@ -6,6 +6,8 @@
 package Paneles;
 
 import DAO.CandidatoDAO;
+import DAO.GruporDAO;
+import Modelo.Grupo;
 import Utilidades.VerTabla;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -24,6 +26,7 @@ public class JPVerCandidato extends javax.swing.JPanel {
     boolean bandera = false;
     VerTabla v;
     CandidatoDAO candidatoDAO;
+    GruporDAO grupoDAO;
 
     /**
      * Creates new form JPCandidato
@@ -32,6 +35,7 @@ public class JPVerCandidato extends javax.swing.JPanel {
         initComponents();
         v = new VerTabla();
         candidatoDAO = new CandidatoDAO();
+        grupoDAO = new GruporDAO();
         v.visualizar_tabla(tabla);
     }
 
@@ -76,7 +80,7 @@ public class JPVerCandidato extends javax.swing.JPanel {
         jlHorastrabajo = new javax.swing.JLabel();
         jlTrabaja = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        cerrarSesion1 = new principal.MaterialButtomRectangle();
+        btnAceptarCandidato = new principal.MaterialButtomRectangle();
 
         jPanel2.setBackground(new java.awt.Color(58, 159, 171));
 
@@ -213,14 +217,14 @@ public class JPVerCandidato extends javax.swing.JPanel {
 
         jLabel13.setText("jLabel13");
 
-        cerrarSesion1.setBackground(new java.awt.Color(58, 159, 171));
-        cerrarSesion1.setForeground(new java.awt.Color(255, 255, 255));
-        cerrarSesion1.setText("ACEPTAR CANDIDATO");
-        cerrarSesion1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cerrarSesion1.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
-        cerrarSesion1.addActionListener(new java.awt.event.ActionListener() {
+        btnAceptarCandidato.setBackground(new java.awt.Color(58, 159, 171));
+        btnAceptarCandidato.setForeground(new java.awt.Color(255, 255, 255));
+        btnAceptarCandidato.setText("ACEPTAR CANDIDATO");
+        btnAceptarCandidato.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAceptarCandidato.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
+        btnAceptarCandidato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cerrarSesion1ActionPerformed(evt);
+                btnAceptarCandidatoActionPerformed(evt);
             }
         });
 
@@ -277,7 +281,7 @@ public class JPVerCandidato extends javax.swing.JPanel {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(cerrarSesion1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnAceptarCandidato, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
@@ -345,7 +349,7 @@ public class JPVerCandidato extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(jlHorastrabajo)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(cerrarSesion1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnAceptarCandidato, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(80, 80, 80))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -381,15 +385,27 @@ public class JPVerCandidato extends javax.swing.JPanel {
         v.visualizar_tabla(tabla);
     }//GEN-LAST:event_btnActualizarActionPerformed
 
-    private void cerrarSesion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarSesion1ActionPerformed
-        candidatoDAO.AceptarCandidato(matricula);
+    private void btnAceptarCandidatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarCandidatoActionPerformed
+
+        int grupAux = grupoDAO.numeroGrupos();
+        System.out.println(grupAux);
+        int numCand = grupoDAO.numeroCandidatos(grupAux);
+        if (numCand < 25) {
+            candidatoDAO.AceptarCandidato(matricula);
+            grupoDAO.InsertarMienbroAlGrupo(matricula, grupAux);
+        }else{
+            Grupo grupo = new Grupo(grupAux + 1, 1); //Corregir lo del asesor para que se asigne solito y aumente
+            grupoDAO.InsertarGrupo(grupo);
+            candidatoDAO.AceptarCandidato(matricula);
+            grupoDAO.InsertarMienbroAlGrupo(matricula, grupAux + 1);
+        }
         v.visualizar_tabla(tabla);
-    }//GEN-LAST:event_cerrarSesion1ActionPerformed
+    }//GEN-LAST:event_btnAceptarCandidatoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private principal.MaterialButtomRectangle btnAceptarCandidato;
     private javax.swing.JButton btnActualizar;
-    private principal.MaterialButtomRectangle cerrarSesion1;
     private javax.swing.JLabel jLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

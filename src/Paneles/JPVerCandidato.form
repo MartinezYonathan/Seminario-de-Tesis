@@ -75,7 +75,7 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="cerrarSesion1" max="32767" attributes="0"/>
+                      <Component id="btnAceptarCandidato" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -153,7 +153,7 @@
                   </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
-              <Component id="cerrarSesion1" min="-2" pref="55" max="-2" attributes="0"/>
+              <Component id="btnAceptarCandidato" min="-2" pref="55" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -460,7 +460,7 @@
         <Property name="text" type="java.lang.String" value="jLabel13"/>
       </Properties>
     </Component>
-    <Component class="principal.MaterialButtomRectangle" name="cerrarSesion1">
+    <Component class="principal.MaterialButtomRectangle" name="btnAceptarCandidato">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ab" green="9f" red="3a" type="rgb"/>
@@ -477,7 +477,7 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cerrarSesion1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAceptarCandidatoActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

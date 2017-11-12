@@ -5,25 +5,37 @@
  */
 package Modelo;
 
-import java.util.ArrayList;
 
 /**
  *
  * @author MABY
  */
 public class Grupo {
-    private ArrayList<Candidato> candidatos;
 
-    public Grupo(ArrayList<Candidato> candidatos) {
-        this.candidatos = candidatos;
+    private int id_grupo;
+    private int id_asesor;
+
+    public Grupo(int id_grupo, int id_asesor) {
+        this.id_grupo = id_grupo;
+        this.id_asesor = id_asesor;
     }
 
-    public ArrayList<Candidato> getCandidatos() {
-        return candidatos;
+    public int getId_grupo() {
+        return id_grupo;
     }
 
-    public void setCandidatos(ArrayList<Candidato> candidatos) {
-        this.candidatos = candidatos;
+    public void setId_grupo(int id_grupo) {
+        this.id_grupo = id_grupo;
     }
+
+    public int getId_asesor() {
+        return id_asesor;
+    }
+
+    public void setId_asesor(int id_asesor) {
+        this.id_asesor = id_asesor;
+    }
+    
+    
     
 }
