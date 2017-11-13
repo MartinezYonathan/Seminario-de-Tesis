@@ -5,10 +5,9 @@
  */
 package Paneles;
 
-
 import DAO.AsesorDAO;
 import Modelo.Asesor;
-
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,16 +15,15 @@ import Modelo.Asesor;
  */
 public class JPAsesor extends javax.swing.JPanel {
 
-    
     private int id_asesor;
     private String nombre;
     private String cubículo;
     private String correo;
     private String horarioAsesoria;
-    
+
     private Asesor asesor;
     private AsesorDAO asesorDAO;
-    
+
     /**
      * Creates new form JPCandidato
      */
@@ -46,56 +44,87 @@ public class JPAsesor extends javax.swing.JPanel {
         jLabel = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        bntAgregar = new javax.swing.JButton();
         txtCubiculo = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         txtCorreo = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         txtHAsesorias = new javax.swing.JTextField();
+        jPanel3 = new javax.swing.JPanel();
+        titulo1 = new javax.swing.JLabel();
+        btnAgregar = new principal.MaterialButtomRectangle();
 
         jLabel.setText("Nombre: ");
 
         jLabel2.setText("Cubiculo:");
 
-        bntAgregar.setText("Agregar");
-        bntAgregar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bntAgregarActionPerformed(evt);
-            }
-        });
-
         jLabel4.setText("Correo: ");
 
         jLabel5.setText("Horario Asesorias:");
+
+        jPanel3.setBackground(new java.awt.Color(58, 159, 171));
+
+        titulo1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        titulo1.setForeground(new java.awt.Color(255, 255, 255));
+        titulo1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titulo1.setText("AGREGAR ASESOR");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(382, 382, 382)
+                .addComponent(titulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(titulo1, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        btnAgregar.setBackground(new java.awt.Color(58, 159, 171));
+        btnAgregar.setForeground(new java.awt.Color(255, 255, 255));
+        btnAgregar.setText("AGREGAR");
+        btnAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAgregar.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(159, 159, 159)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(151, 151, 151)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel5))
-                        .addGap(76, 76, 76)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtHAsesorias, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtCubiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNombre)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(282, 282, 282)
-                        .addComponent(bntAgregar)))
-                .addGap(197, 197, 197))
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel5))
+                .addGap(76, 76, 76)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
+                    .addComponent(txtCubiculo)
+                    .addComponent(txtCorreo)
+                    .addComponent(txtHAsesorias))
+                .addGap(189, 189, 189))
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(190, 190, 190)
+                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(57, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(87, 87, 87)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -111,30 +140,53 @@ public class JPAsesor extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(txtHAsesorias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
-                .addComponent(bntAgregar)
-                .addGap(434, 434, 434))
+                .addGap(44, 44, 44)
+                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(298, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bntAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntAgregarActionPerformed
-
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         nombre = txtNombre.getText();
+        if (nombre.equals("")) {
+            JOptionPane.showMessageDialog(null, "Te falto agregar el nombre", "Error", JOptionPane.ERROR_MESSAGE);
+            txtNombre.requestFocusInWindow();
+            return;
+        }
         correo = txtCorreo.getText();
+        if (correo.equals("")) {
+            JOptionPane.showMessageDialog(null, "Te falto agregar el correo", "Error", JOptionPane.ERROR_MESSAGE);
+            txtCorreo.requestFocusInWindow();
+            return;
+        }
         cubículo = txtCubiculo.getText();
+        if (cubículo.equals("")) {
+            JOptionPane.showMessageDialog(null, "Te falto agregar el cubiculo", "Error", JOptionPane.ERROR_MESSAGE);
+            txtCubiculo.requestFocusInWindow();
+            return;
+        }
         horarioAsesoria = txtHAsesorias.getText();
-
+        if (horarioAsesoria.equals("")) {
+            JOptionPane.showMessageDialog(null, "Te falto agregar el cubiculo", "Error", JOptionPane.ERROR_MESSAGE);
+            txtHAsesorias.requestFocusInWindow();
+            return;
+        }
         asesor = new Asesor(id_asesor, nombre, cubículo, correo, horarioAsesoria);
         String resultado = asesorDAO.InsertarCandidato(asesor);
-    }//GEN-LAST:event_bntAgregarActionPerformed
+        JOptionPane.showMessageDialog(null, resultado, "ASESOR", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_btnAgregarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bntAgregar;
+    private principal.MaterialButtomRectangle btnAgregar;
     private javax.swing.JLabel jLabel;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    public static javax.swing.JLabel titulo;
+    public static javax.swing.JLabel titulo1;
     private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtCubiculo;
     private javax.swing.JTextField txtHAsesorias;
